@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+    body {
+        background-color: white;
+        padding:0;
+        width: 100%;
+    }   
+}
+@layer components {
+    #sidenav-container {
+        @apply fixed top-0 left-0 w-72 h-full bg-black hidden;
+    }
+    .content1>#close-btn {
+        @apply absolute right-0 text-2xl text-white bg-none
+   
+    }
+    .content1 {
+        @apply mt-5 font-sans text-white list-image-none
+    }
+    #sidenav-content>li {
+        @apply list-image-none mb-5
+    }
+    .content2 {
+        @apply font-sans text-white list-image-none
+    }
+    #sidenav-content2>li {
+        @apply list-image-none text-white;
+    }
+    .content3 {
+        @apply font-sans text-white list-image-none
+    }
+    #sidenav-content3 {
+        @apply list-image-none text-white;
+    }
+    #sidenav-divider {
+        @apply w-full ml-0 text-white
+    }
+    #sidenav-content>.categories-icon {
+    color: black;
+    }
+
+
+
+    #footer-container {
+        @apply m-0 w-full border  bg-slate-900 border-black;
+    }
+    #footer-container>#footer-content1 {
+        @apply float-left w-1/3 mr-4;
+    }
+    
+    #content>h6 {
+        @apply ml-8;
+    }
+    #footer-container,li>a {
+        @apply no-underline text-white
+    }
+    #content>ol {
+        @apply list-none ml-0;
+    }
+    #payment>p {
+        @apply inline text-lg;
+    }
+    div>a {
+        @apply mr-1 text-black text-lg;
+    }
+    #footer-content2 {
+    @apply  float-left
+}
+    #footer-content2>#content {
+        @apply float-left mr-8
+    }
+    #productitem {
+        @apply bg-white
+    }
+
+}
+@layer utilities {
+    #header-acct-dropdown {
+        @apply mt-0.5 mr-10 inline;
+    }
+    #header-help-btn {
+        @apply inline bg-white border-none
+    }
+    #dropdown-help {
+        @apply inline  right-48 absolute
+    }
+} 
