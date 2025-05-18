@@ -1,11 +1,7 @@
 import { useParams } from "react-router-dom";
 import productdatadetails from "../data/productdata.ts";
-import Header from "../header.tsx";
-import Footer from "../footer.tsx";
 import { useContext } from "react";
 import { CartContext } from "../cartcontext";
-
-//import Counter from '../Counter.jsx'
 
 function Productdata() {
   const { addToCart } = useContext(CartContext);
@@ -22,9 +18,8 @@ function Productdata() {
   }
 
   return (
+      
     <>
-      <Header />
-      {/*<div id="product-wrapper" key={id}>*/}
       <div
         className="border clearfix border-black ml-[8%] mt-[2%] w-[60%] h-[600px] float-left"
         id="product-container"
@@ -35,7 +30,8 @@ function Productdata() {
           id="img-container"
         >
           <img
-            className=" w-[200px] h-[250px] ml-[10%] mr-[10%]" src={product.image}
+            className=" w-[200px] h-[250px] ml-[10%] mr-[10%]"
+            src={product.image}
             id="product-content1"
             alt={product.name}
           />
@@ -45,21 +41,14 @@ function Productdata() {
         <hr className="ml-[30%] mr-[5%]" />
         <p className="ml-[30%]">&#8358;{product.price} </p>
         <hr className="ml-[30%] mr-[5%]" />
-        {/*<Counter />*/}
-        {/*<p style={{marginLeft:"30%"}}>Quantity:
-                    <div style={{border:"1px solid black",height:"25px",width:"15%",borderRadius:"2px",marginLeft:"2%"}}className="btn-group">
-                        <button style={{border:"none",backgroundColor:"white",height:"23px",marginLeft:"6%",borderRight:"1px solid black"}}>-</button>
-                        <p style={{border:"none",backgroundColor:"white",marginLeft:"13px"}}>{count}</p>
-                        <button onClick={incrementCount} style={{marginLeft:"10px",backgroundColor:"white",border:"none",borderLeft:"1px solid black",height:"23px"}}>+</button>
-                    </div>
-                </p>*/}
         <hr className="ml-[30%] mr-[5%]" />
         <p className="ml-[30%]"> {product.description} </p>
         <button
-          className="border-none w-[56%] h-[35%] rounded-md"
+          className="border-none bg-black w-[50%] ml-6 text-white h-10 rounded-md"
           id="cart-btn"
-          onClick={() => {addToCart(product);
-             alert(`${product.name} added to cart!`);
+          onClick={() => {
+            addToCart(product);
+            alert(`${product.name} added to cart!`);
           }}
         >
           Add To Cart
@@ -118,10 +107,6 @@ function Productdata() {
       >
         <h5 className="ml-[1%]">Reviews</h5>
       </div>
-
-
-
-
 
       <div
         className="clearfix ml-[8%] w-[84.5%] h-[320px] mb-[1%] border border-black "
@@ -278,8 +263,6 @@ function Productdata() {
           </p>
         </a>
       </div>
-
-      <Footer />
     </>
   );
 }

@@ -1,7 +1,5 @@
 import { useParams } from "react-router-dom";
 import { Product } from "../data/productcategory.ts";
-import Header from "../header.tsx";
-import Footer from '../footer.tsx'
 import $ from "jquery";
 
 function Products() {
@@ -15,8 +13,6 @@ function Products() {
   }
   return (
     <>
-      <Header />
-      <div id="productitem" className="min-h-screen clearfix">
         <div
           className="float-left w-[20%] mt-[3%] ml-[5%] mr-[1%] h-auto border border-black"
           id="wrapper"
@@ -162,8 +158,6 @@ function Products() {
           id="updatedPage"
           className="float-left w-[70%] h-[600px] mt-[3%] mb-[3%] border border-black"
         ></div>
-      </div>
-      <Footer />
     </>
   );
 }

@@ -1,13 +1,17 @@
 
 import Header from './header';
+import Footer from './footer';
 import { Outlet } from 'react-router-dom';
+
 
 function Layout() {
   return (
     <>
       <Header />
-      {/* Render nested route content */}
-      <Outlet />
+      <main className="m-0 w-full min-h-screen bg-gray-50" id="wrapper">
+        <Outlet />
+      </main>
+      <Footer />
     </>
   );
 }
