@@ -1,12 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useState} from "react";
 
 //Our Product Shape
 interface CartItem {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  quantity: number;
+  id: number,
+  name: string,
+  image: string,
+  price: number,
+  quantity: number,
 }
 
 //Shape Of Our Context
@@ -14,6 +14,8 @@ interface CartContextType {
   cartItems: CartItem[];
   addToCart: (product: CartItem) => void;
 }
+
+
 
 //Context Created
 export const CartContext = createContext<CartContextType>({
@@ -24,6 +26,7 @@ export const CartContext = createContext<CartContextType>({
 //Cart Provider
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]); //storing the list of products(the cart) in state,starts with an empty array [].
+
 
   //Add Cart Function
   const addToCart = (Product: CartItem) => {
