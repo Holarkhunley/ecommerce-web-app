@@ -3,15 +3,18 @@ import { CartContext } from "../cartcontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPlus, faMinus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CartPage() {
   const { cartItems, removeFromCart, updateQuantity, clearCart, cartTotal } = useContext(CartContext);
 
-  const handleQuantityChange = (id: number, newQuantity: number) => {
+  const handleQuantityChange = (id: string, newQuantity: number) => {
     if (newQuantity >= 1) {
       updateQuantity(id, newQuantity);
     }
   };
+
+  const navigate = useNavigate()
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 py-8">
@@ -20,7 +23,7 @@ function CartPage() {
           <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
           <span>Continue Shopping</span>
         </Link>
-        <h1 className="text-2xl font-bold flex-grow">Your Shopping Cart</h1>
+        <h1 className="text-2xl font-bold text-gray-700 flex-grow">Your Shopping Cart</h1>
       </div>
 
       {cartItems.length === 0 ? (
@@ -36,15 +39,15 @@ function CartPage() {
           {/* Cart Items */}
           <div className="lg:w-2/3 w-full">
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-              <div className="hidden md:grid md:grid-cols-5 bg-gray-50 p-4 border-b">
-                <div className="md:col-span-2">Product</div>
-                <div className="text-center">Price</div>
-                <div className="text-center">Quantity</div>
-                <div className="text-center">Total</div>
+              <div className="hidden md:grid md:grid-cols-5 bg-purple-900 p-4 border-b">
+                <div className="md:col-span-2 text-white">Product</div>
+                <div className="text-center  text-white">Price</div>
+                <div className="text-center  text-white">Quantity</div>
+                <div className="text-center  text-white">Total</div>
               </div>
 
               {cartItems.map((item) => (
-                <div key={item.id} className="border-b last:border-b-0 p-4 grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+                <div key={item._id} className="border-b last:border-b-0 p-4 grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
                   {/* Product */}
                   <div className="md:col-span-2 flex items-center">
                     <img 
@@ -55,7 +58,7 @@ function CartPage() {
                     <div>
                       <h3 className="font-medium">{item.name}</h3>
                       <button 
-                        onClick={() => removeFromCart(item.id)}
+                        onClick={() => removeFromCart(item._id)}
                         className="text-red-500 text-sm flex items-center mt-2 hover:text-red-700"
                       >
                         <FontAwesomeIcon icon={faTrash} className="mr-1" /> Remove
@@ -74,7 +77,7 @@ function CartPage() {
                     <div className="md:hidden font-medium mb-1">Quantity:</div>
                     <div className="flex items-center justify-center md:justify-center">
                       <button 
-                        onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
+                        onClick={() => handleQuantityChange(item._id, item.quantity - 1)}
                         className="w-8 h-8 flex items-center justify-center border rounded-l bg-gray-100 hover:bg-gray-200"
                       >
                         <FontAwesomeIcon icon={faMinus} />
@@ -83,7 +86,7 @@ function CartPage() {
                         {item.quantity}
                       </div>
                       <button 
-                        onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
+                        onClick={() => handleQuantityChange(item._id, item.quantity + 1)}
                         className="w-8 h-8 flex items-center justify-center border rounded-r bg-gray-100 hover:bg-gray-200"
                       >
                         <FontAwesomeIcon icon={faPlus} />
@@ -132,7 +135,7 @@ function CartPage() {
                 <span>₦{cartTotal.toLocaleString()}</span>
               </div>
               
-              <button className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition">
+              <button onClick={() => navigate("/checkOutForm")} className="w-full bg-purple-900 text-white py-3 rounded-md hover:bg-purple-950 transition">
                 Proceed to Checkout
               </button>
               
